@@ -77,7 +77,6 @@ public class ProduksiService {
         }catch (Exception e){
             e.printStackTrace();
             msg.setStatus(false);
-            msg.setMessage("Berhasil dihapus");
             msg.setMessage(e.getMessage());
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(msg);
         }

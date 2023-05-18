@@ -25,10 +25,6 @@ public class SalesService {
     @Autowired
     private SalesRepositoryClass salesRepositoryClass;
 
-
-
-
-
 //    public SalesService(SalesRepository salesRepository) {
 //        this.salesRepository = salesRepository;
 //    }

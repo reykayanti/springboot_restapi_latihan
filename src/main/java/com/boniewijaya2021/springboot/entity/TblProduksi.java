@@ -26,7 +26,6 @@ public class TblProduksi implements Serializable {
     @Id
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
     @GeneratedValue(strategy = GenerationType.IDENTITY, generator = "uuid2")
-
     @Column(name = "id_produksi", nullable = false)
     private UUID id_produksi;
 

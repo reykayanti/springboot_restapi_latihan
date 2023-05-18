@@ -24,6 +24,7 @@ public class SampleGet {
     private SalesPostService salesPostService;
 
     @GetMapping("/get/dataPenjualan")
+    //untuk ambil 1 id req param ajeee
     public ResponseEntity getDataPenjualan(@RequestParam UUID idSales ){
         ResponseEntity responseEntity = salesService.getDataPenjualan(idSales);
         return responseEntity;
@@ -36,6 +37,7 @@ public class SampleGet {
     }
 
     @PostMapping("/post/sales")
+    //menerima semu
     private ResponseEntity<MessageModel> addSales(@RequestBody TblSales tblSales) {
         ResponseEntity responseEntity = salesPostService.addDataPenjualan(tblSales);
         return responseEntity;
