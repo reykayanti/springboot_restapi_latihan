@@ -39,7 +39,7 @@ public class TblProduksi implements Serializable {
     private String asalBarang;
 
     @Column(name = "biaya_produksi", nullable = false)
-    private Integer biayaProduksi;
+    private Double biayaProduksi;
 
 //    @Column(name = "tanggal_produksi", nullable = false)
 //    private Timestamp tanggalProduksi;

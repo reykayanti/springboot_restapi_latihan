@@ -23,6 +23,12 @@ public class ProduksiController {
         return responseEntity;
     }
 
+    @GetMapping("/get/produksibyname")
+    public ResponseEntity getProduksiClassRepo(String namaBarang, String tipeBarang){
+        ResponseEntity responseEntity = produksiService.getProduksiClassRepo(namaBarang, tipeBarang);
+        return responseEntity;
+    }
+
     @PostMapping("/post/produksi")
     public ResponseEntity addDataProduksi(@RequestBody TblProduksi tblProduksi){
         ResponseEntity responseEntity = produksiService.addDataProduksi(tblProduksi);
@@ -34,6 +40,8 @@ public class ProduksiController {
         ResponseEntity responseEntity = produksiService.deleteDataProduksi(idProduksi);
         return  responseEntity;
     }
+
+
 
 
 }

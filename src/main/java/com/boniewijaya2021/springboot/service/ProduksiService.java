@@ -2,6 +2,9 @@ package com.boniewijaya2021.springboot.service;
 
 import com.boniewijaya2021.springboot.entity.TblProduksi;
 import com.boniewijaya2021.springboot.entity.TblSales;
+import com.boniewijaya2021.springboot.pojo.PenjualanPojo;
+import com.boniewijaya2021.springboot.pojo.ProduksiPojo;
+import com.boniewijaya2021.springboot.repository.ProdukRepositoryClass;
 import com.boniewijaya2021.springboot.repository.ProduksiRepository;
 import com.boniewijaya2021.springboot.utility.MessageModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -18,6 +22,9 @@ public class ProduksiService {
 
     @Autowired
     private ProduksiRepository produksiRepository;
+
+    @Autowired
+    private ProdukRepositoryClass produkRepositoryClass;
 
     public ResponseEntity getDataProduksi(UUID idProduksi){
         Map<String, Object> result = new HashMap<>();
@@ -81,5 +88,31 @@ public class ProduksiService {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(msg);
         }
 
+    }
+
+    public ResponseEntity getProduksiClassRepo(String namaBarang, String tipeBarang){
+        Map<String, Object> result = new HashMap<>();
+        MessageModel msg = new MessageModel();
+        try {
+            List<ProduksiPojo> data = produkRepositoryClass.getDataDinamic(namaBarang, tipeBarang);
+            if(data.isEmpty()) {
+                msg.setStatus(true);
+                msg.setMessage("data tidak ditemukan");
+                msg.setData(null);
+                return ResponseEntity.ok().body(msg);
+            }else {
+                msg.setStatus(true);
+                msg.setMessage("Success");
+                result.put("data", data);
+                msg.setData(result);
+                return ResponseEntity.ok().body(msg);
+            }
+
+        }catch (Exception e){
+            msg.setStatus(false);
+            msg.setMessage(e.getMessage());
+            return ResponseEntity.ok().body(msg);
+
+        }
     }
 }

@@ -10,7 +10,7 @@ import java.sql.Timestamp;
 public class ProduksiPojo {
     private String idProduksi;
     private String asalBarang;
-    private Integer biayaProduksi;
+    private Double biayaProduksi;
     private String namaBarang;
     private Timestamp tanggalProduksi;
     private String tipeBarang;
